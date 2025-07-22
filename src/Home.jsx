@@ -1,26 +1,26 @@
-import { Link } from 'react-router-dom';
-import './App.css'; // Make sure you import your CSS
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 const Home = () => {
-  // Get the URL saved in localStorage
   const url = localStorage.getItem('iframeURL');
+  const navigate = useNavigate();
+
+  // If no URL, redirect to /add
+  useEffect(() => {
+    if (!url) {
+      navigate('/add');
+    }
+  }, [url, navigate]);
 
   return (
     <div className="full-screen-iframe">
-      {url ? (
+      {url && (
         <iframe
           src={url}
           title="360 View"
           allowFullScreen
         ></iframe>
-      ) : (
-        <div className="no-url">
-          <h2>No 360° URL found</h2>
-          <p>Please add one first.</p>
-          <Link to="/add">
-            <button>Add 360° URL</button>
-          </Link>
-        </div>
       )}
     </div>
   );
