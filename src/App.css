@@ -1,16 +1,33 @@
+/* Make html and body fill the viewport */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
+/* Full-screen container */
 .full-screen-iframe {
   width: 100%;
-  height: 100vh; /* full viewport height */
+  height: 100vh; /* 100% of viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Iframe fills the container */
 .full-screen-iframe iframe {
   width: 100%;
   height: 100%;
-  border: 0;
+  border: none;
+}
+
+/* If no URL, center the message */
+.no-url {
+  text-align: center;
+}
+
+.no-url button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
